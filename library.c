@@ -14,6 +14,13 @@ typedef struct{
 	
 }livros;
 
+typedef struct{
+  char nome[100];
+  int dia,mes,ano;
+  char state;
+  
+}clientes;
+
 
 int addLivro(livros bib[],int n){
 	printf("Digite o titulo do livro: \n");
@@ -28,7 +35,7 @@ int addLivro(livros bib[],int n){
 	n ++;
 	return n;
 }
-int delLivro(livros bib[],int n){
+void delLivro(livros bib[],int n){
   bib[n].state = '0';
 }
 int compara(char frase[], char palavra[]){ //Func p/ comparar 
@@ -86,19 +93,55 @@ void devolveLivro(livros bib[], int n){
   bib[n].livro.id = -1;
 }
 
+int addCliente(clientes c[],int n){
+  printf("Digite seu nome:\n");
+  gets(c[n].nome);
+  __fpurge(stdin);
+  printf("Dia de nascimento: \n");
+  scanf("%d",&c[n].dia);
+  __fpurge(stdin);
+  printf("Mes de nascimento: \n");
+  scanf("%d",&c[n].mes);
+  __fpurge(stdin);
+  printf("Ano de nascimento: \n");
+  scanf("%d",&c[n].ano);
+  __fpurge(stdin);
+  c[n].state = '1';
+  n ++;
+  return n;
+}
+
+void delCliente(clientes c[],int n){
+  c[n].state = '0';
+}
+
+int findCliente(clientes c[5],char palavra[]){ //Muda tamanho do vetor depois c[] <- 
+  int i;
+  for (i=0;i<5; i++){
+    if (compara(c[i].nome,palavra)){
+      printf("%d ", i);
+    }
+  }
+}
+
+
 main(){
 	livros x[5]; //Tamanho desse vetor tem q ser o msm na func findLivro //
-	int y = 0;
-	while (y<2){
-	y = addLivro(x,y);
+	clientes y[5];
+	int i = 0;
+	while (i<2){
+	i = addLivro(x,i);
+	i --;
+	i = addCliente(y,i);
 }
 
 printf("%s %s %c \n",x[0].titulo,x[0].autor,x[0].state);
 printf("%s %s %c \n",x[1].titulo,x[1].autor,x[1].state);
 
-findLivro(x,"Teste");
-delLivro(x,0);
-delLivro(x,1);
-printf("%s %s %c \n",x[0].titulo,x[0].autor,x[0].state);
-printf("%s %s %c \n",x[1].titulo,x[1].autor,x[1].state);
+printf("%s %d %c \n",y[0].nome,y[0].dia,y[0].state);
+printf("%s %d %c \n",y[1].nome,y[1].dia,y[1].state);
+
+
+findCliente(y,"Bernardo");
+
 }
