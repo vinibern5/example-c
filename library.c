@@ -383,4 +383,5 @@ main(){ //Na hora dos arquivos else p/ contl contc //
       fwrite(&y[i],sizeof(clientes),1,fp);
     }
   }
+  fclose(fp);
 }
