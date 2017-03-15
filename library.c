@@ -267,8 +267,8 @@ main(){ //Na hora dos arquivos else p/ contl contc //
         demp ++;
         break;
       case 2:
+	system("cls");
         if(contl > 0){
-          system("cls");
           printf("Os livros disponiveis sao: \n");
           mostraLivros(x,clivro);
           if(x[delLivro(x)].livro.status == '0'){
@@ -298,6 +298,7 @@ main(){ //Na hora dos arquivos else p/ contl contc //
         }
         break;
       case 4:
+        system("cls");
         if(demp > 0){
           printf("Livros disponiveis pra emprestimo: \n");
           mostraLivrosEmp(x,clivro);
